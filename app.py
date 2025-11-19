@@ -1,16 +1,30 @@
-import os
 import streamlit as st
-from langchain_openai import ChatOpenAI
+from agents import criar_agente_executivo
 
-st.write(">>> CONFIG.PY CARREGADO")
-st.write(">>> OPENAI_API_KEY =", os.getenv("OPENAI_API_KEY"))
-st.write(">>> ChatOpenAI vindo de:", ChatOpenAI.__module__)
-st.write(">>> Executando get_llm()")
+st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
-def get_llm():
-    key = os.getenv("OPENAI_API_KEY")
-    return ChatOpenAI(
-        model="gpt-4o-mini",
-        temperature=0.1,
-        openai_api_key=key
-    )
+st.title("💼 Agente Executivo — LangChain + Streamlit")
+
+st.write("Envie uma pergunta para o agente executivo baseado em GPT-4o-mini:")
+
+# Campo de texto
+user_input = st.text_area("Sua mensagem:", height=120)
+
+# Botão
+if st.button("Enviar"):
+    if not user_input.strip():
+        st.warning("Digite uma mensagem antes de enviar.")
+    else:
+        with st.spinner("Gerando resposta..."):
+            try:
+                agent = criar_agente_executivo()
+                response = agent.run(input=user_input)
+
+                st.subheader("📘 Resposta do Agente:")
+                st.write(response)
+
+            except Exception as e:
+                st.error(f"Ocorreu um erro ao gerar a resposta: {e}")
+
+st.markdown("---")
+st.caption("Aplicação construída com Streamlit + LangChain + OpenAI")
