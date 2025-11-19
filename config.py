@@ -10,3 +10,4 @@ def get_llm():
         api_key=os.getenv("OPENAI_API_KEY"),
         temperature=0.1,
     )
+print(">>> OPENAI KEY DETECTADA NO STREAMLIT:", os.getenv("OPENAI_API_KEY"))
