@@ -5,7 +5,7 @@ import langchain_openai
 from agents.agente_executivo import criar_agente_executivo
 
 print(">>> VERSÃO REAL DO OPENAI:", openai.__version__)
-print(">>> VERSÃO REAL DO LANGCHAIN-OPENAI:", langchain_openai.__version__)
+# REMOVIDO: langchain_openai.__version__
 
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
@@ -13,10 +13,8 @@ st.title("💼 Agente Executivo — LangChain + Streamlit")
 
 st.write("Envie uma pergunta para o agente executivo baseado em GPT-4o-mini:")
 
-# Campo de texto
 user_input = st.text_area("Sua mensagem:", height=120)
 
-# Botão
 if st.button("Enviar"):
     if not user_input.strip():
         st.warning("Digite uma mensagem antes de enviar.")
