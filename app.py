@@ -1,5 +1,6 @@
 import streamlit as st
-from agents import criar_agente_executivo
+from agents.agente_executivo import criar_agente_executivo
+
 
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
