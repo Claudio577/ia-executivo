@@ -1,5 +1,5 @@
 import os
-from langchain_openai import ChatOpenAI
+from langchain_openai.chat_models import ChatOpenAI
 
 def get_llm():
     return ChatOpenAI(
