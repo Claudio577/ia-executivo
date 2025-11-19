@@ -1,13 +1,15 @@
-import streamlit as st
-from agents.agente_executivo import criar_agente_executivo
+import os
+from langchain_openai import ChatOpenAI
 
-st.title("💼 Agente Executivo – Estratégia Corporativa")
+print(">>> CONFIG.PY CARREGADO")
+print(">>> OPENAI_API_KEY =", os.getenv("OPENAI_API_KEY"))
+print(">>> ChatOpenAI vindo de:", ChatOpenAI.__module__)
+print(">>> Executando get_llm()")
 
-query = st.text_area("Digite sua pergunta:")
-
-if st.button("Enviar"):
-    agente = criar_agente_executivo()
-    resposta = agente.invoke({"input": query})
-
-    st.subheader("📌 Resposta Executiva")
-    st.write(resposta["text"])
+def get_llm():
+    key = os.getenv("OPENAI_API_KEY")
+    return ChatOpenAI(
+        model="gpt-4o-mini",
+        temperature=0.1,
+        openai_api_key=key
+    )
