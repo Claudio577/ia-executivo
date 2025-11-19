@@ -1,5 +1,6 @@
-from langchain.prompts import ChatPromptTemplate
-from langchain.chains import LLMChain
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.runnables import RunnableSequence
 from config import get_llm
 
 EXECUTIVE_PROMPT = """
@@ -15,5 +16,10 @@ def criar_agente_executivo():
         ("human", "{input}")
     ])
 
-    chain = LLMChain(llm=llm, prompt=prompt)
+    chain = RunnableSequence(
+        prompt,
+        llm,
+        StrOutputParser()
+    )
+
     return chain
