@@ -1,5 +1,9 @@
 import streamlit as st
+import openai
+import langchain_openai
+
 from agents.agente_executivo import criar_agente_executivo
+
 print(">>> VERSÃO REAL DO OPENAI:", openai.__version__)
 print(">>> VERSÃO REAL DO LANGCHAIN-OPENAI:", langchain_openai.__version__)
 
