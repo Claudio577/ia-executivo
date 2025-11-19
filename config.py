@@ -1,9 +1,8 @@
-from langchain.chat_models import init_chat_model
 import os
+from dotenv import load_dotenv
+from langchain.chat_models import init_chat_model
 
-print(">>> CONFIG.PY CARREGADO")
-print(">>> OPENAI_API_KEY =", os.getenv("OPENAI_API_KEY"))
-print(">>> MODULO ChatOpenAI =", ChatOpenAI.__module__)
+load_dotenv()
 
 def get_llm():
     return init_chat_model(
