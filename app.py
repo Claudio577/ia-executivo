@@ -1,11 +1,7 @@
 import streamlit as st
 import openai
-import langchain_openai
 
 from agents.agente_executivo import criar_agente_executivo
-
-print(">>> VERSÃO REAL DO OPENAI:", openai.__version__)
-# REMOVIDO: langchain_openai.__version__
 
 st.set_page_config(page_title="Agente Executivo", page_icon="💼")
 
@@ -23,7 +19,6 @@ if st.button("Enviar"):
             try:
                 agent = criar_agente_executivo()
                 response = agent.invoke({"input": user_input})
-
 
                 st.subheader("📘 Resposta do Agente:")
                 st.write(response)
