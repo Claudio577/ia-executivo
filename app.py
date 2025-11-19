@@ -1,10 +1,11 @@
 import os
+import streamlit as st
 from langchain_openai import ChatOpenAI
 
-print(">>> CONFIG.PY CARREGADO")
-print(">>> OPENAI_API_KEY =", os.getenv("OPENAI_API_KEY"))
-print(">>> ChatOpenAI vindo de:", ChatOpenAI.__module__)
-print(">>> Executando get_llm()")
+st.write(">>> CONFIG.PY CARREGADO")
+st.write(">>> OPENAI_API_KEY =", os.getenv("OPENAI_API_KEY"))
+st.write(">>> ChatOpenAI vindo de:", ChatOpenAI.__module__)
+st.write(">>> Executando get_llm()")
 
 def get_llm():
     key = os.getenv("OPENAI_API_KEY")
