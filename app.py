@@ -22,7 +22,8 @@ if st.button("Enviar"):
         with st.spinner("Gerando resposta..."):
             try:
                 agent = criar_agente_executivo()
-                response = agent.run(input=user_input)
+                response = agent.invoke({"input": user_input})
+
 
                 st.subheader("📘 Resposta do Agente:")
                 st.write(response)
