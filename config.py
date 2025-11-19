@@ -1,13 +1,13 @@
+from langchain.chat_models import init_chat_model
 import os
-from langchain_openai import ChatOpenAI
 
 print(">>> CONFIG.PY CARREGADO")
 print(">>> OPENAI_API_KEY =", os.getenv("OPENAI_API_KEY"))
 print(">>> MODULO ChatOpenAI =", ChatOpenAI.__module__)
 
 def get_llm():
-    return ChatOpenAI(
+    return init_chat_model(
         model="gpt-4o-mini",
+        api_key=os.getenv("OPENAI_API_KEY"),
         temperature=0.1,
-        openai_api_key=os.getenv("OPENAI_API_KEY")
     )
